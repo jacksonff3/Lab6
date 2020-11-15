@@ -11,6 +11,9 @@ public class Main {
         int overallIndex;
         String fileName = "TY9_Grades.csv";
         File file = new File(fileName);
+        // IM MAKING AN ARRAY FOR THE EMPLID AND EVERY SINGLE ASSIGNMENT AND TOTAL GRADE
+
+
         String [] unsortedSID = new String[38];
         String [] unsortedPP1 = new String[38];
         String [] unsortedPP2 = new String[38];
@@ -26,6 +29,9 @@ public class Main {
         String [] unsortedM2 = new String[38];
         String [] unsortedSubtotal = new String[38];
 
+        // THIS READS IN THE ENTIRE CSV FILE AND PUTS THE DATA INTO THE ARRAYS CREATED ABOVE
+
+
         try {
             Scanner scanner = new Scanner(file); //Scans File
             scanner.next();
@@ -40,7 +46,7 @@ public class Main {
                 unsortedPP4[i] = values[4].replaceAll("\"","");
                 unsortedPP5[i] = values[5].replaceAll("\"","");
                 unsortedPP6[i] = values[6].replaceAll("\"","");
-                unsortedL1[i] = values[7].replace("\"","");               //Everything into arrays
+                unsortedL1[i] = values[7].replace("\"","");
                 unsortedL2[i] = values[8].replace("\"","");
                 unsortedL3[i] = values[9].replace("\"","");
                 unsortedL4[i] = values[10].replace("\"","");
@@ -52,16 +58,20 @@ public class Main {
             } catch(FileNotFoundException e){
            e.printStackTrace();
         }
-        massSorting(unsortedSID,unsortedPP1, unsortedPP2,unsortedPP3,unsortedPP4,unsortedPP5,unsortedPP6, //Calls Method massSorting
-                unsortedL1,unsortedL2,unsortedL3,unsortedL4,unsortedM1,unsortedM2,unsortedSubtotal);      //All the "unsorted" arrays should be sorted now
+
+        // CALLS THE METHOD massSorting. ALL THE ARRAYS SHOULD BE SORTED NOW
+        massSorting(unsortedSID,unsortedPP1, unsortedPP2,unsortedPP3,unsortedPP4,unsortedPP5,unsortedPP6,
+                unsortedL1,unsortedL2,unsortedL3,unsortedL4,unsortedM1,unsortedM2,unsortedSubtotal);
 
 
 
-        //Prompting user to search for their ID AND the grade they got in a certain assignment
+        //PROMPTING THE USER TO ENTER THEIR ID
         System.out.println("Please enter TY9 - (last 4 digits of your EMPLID)");
         inputStr = sc.next();
         overallIndex = findElementIndex(inputStr, unsortedSID);
         int rank = overallIndex;
+
+        //PROMPTING THE USER TO SEARCH FOR A GRADE FOR A CERTAIN ASSIGNMENT
         System.out.println("What which assignment would you like to search up your grade for?" +
                 "\n 1) Practice Problem 1" +
                 "\n 2) Practice Problem 2" +
@@ -76,6 +86,8 @@ public class Main {
                 "\n 11) Midterm 1" +
                 "\n 12) Midterm 2" +
                 "\n 13) Overall Grade");
+
+
         //Checking through conditions and returning back the grade they've searched
         inputInt = sc.nextInt();
         if(inputInt == 1){
@@ -120,6 +132,8 @@ public class Main {
         gradeCalculator(unsortedSubtotal,overallIndex,sc);
         System.out.println("Your current class ranking is *" + rank + "*");
     }
+
+
     //SORTS EVERY SINGLE ARRAY IN THE CSV FILE
     public static void massSorting(String [] unSortedSid, String [] unSortedPP1,String [] unSortedPP2, String [] unSortedPP3, String [] unSortedPP4
                             , String [] unSortedPP5, String [] unSortedPP6, String [] unSortedL1, String [] unSortedL2, String [] unSortedL3
