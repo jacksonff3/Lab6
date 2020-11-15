@@ -57,7 +57,7 @@ public class Main {
 
 
 
-        //Prompting user to search
+        //Prompting user to search for their ID AND the grade they got in a certain assignment
         System.out.println("Please enter TY9 - (last 4 digits of your EMPLID)");
         inputStr = sc.next();
         overallIndex = findElementIndex(inputStr, unsortedSID);
@@ -76,6 +76,7 @@ public class Main {
                 "\n 11) Midterm 1" +
                 "\n 12) Midterm 2" +
                 "\n 13) Overall Grade");
+        //Checking through conditions and returning back the grade they've searched
         inputInt = sc.nextInt();
         if(inputInt == 1){
             System.out.println("Practice Problem 1:" + " " + unsortedPP1[overallIndex]);
@@ -119,7 +120,7 @@ public class Main {
         gradeCalculator(unsortedSubtotal,overallIndex,sc);
         System.out.println("Your current class ranking is *" + rank + "*");
     }
-
+    //SORTS EVERY SINGLE ARRAY IN THE CSV FILE
     public static void massSorting(String [] unSortedSid, String [] unSortedPP1,String [] unSortedPP2, String [] unSortedPP3, String [] unSortedPP4
                             , String [] unSortedPP5, String [] unSortedPP6, String [] unSortedL1, String [] unSortedL2, String [] unSortedL3
                             , String [] unSortedL4, String [] unSortedM1, String [] unSortedM2, String [] unsortedSubtotal){
@@ -198,7 +199,7 @@ public class Main {
         }
         return index;
     }
-
+    // ALLOWS USER TO KNOW WHAT THEIR CURRENT GRADE IS AND WHAT GRADE THEY GET AFTER THEY ENTERED THE GRADE THEY THINK THEY'LL GET IN CERTAIN ASSIGNMENTS
     public static void gradeCalculator (String [] sortedSubtotal,int overallIndex,Scanner scanner){
         double points;
         double sum = Double.parseDouble(sortedSubtotal[overallIndex]);
